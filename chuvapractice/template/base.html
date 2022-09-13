@@ -12,6 +12,14 @@
       <a href="/" class="main-title">Django BLOOOOOOOOOOOOOOOOG</a>
     </h1>
       <a class="button" href="{% url 'post_new' %}">NEW BLOG POST</a>
+      {% if user.is_authenticated %}
+        <p>Hi {{ user.username }} </p>
+        <a href="{% url 'logout' %}" class="button-action">logout</a>
+      {% else %}
+        <p class="notLogin">You are not loggent in.</p>
+        <a href="{% url 'login' %}" class="button-action">login</a>
+        <a href="{% url 'signup' %}" class="button-action">Register</a>
+      {% endif %}
   </header>
   <div class="container">
     {% block content %}
